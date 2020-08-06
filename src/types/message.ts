@@ -9,7 +9,9 @@ export type AssetCloudMessage =
     /** 跳转至首页 */
     "GO_HOME" |
     /** 获取当前用户所属集团ID列表 */
-    "GET_GROUP"
+    "GET_GROUP" |
+    /** 获取入口菜单 */
+    "GET_MENU"
     ;
 
 /** 针对每一种消息，分别定义返回数据的类型 */
@@ -23,6 +25,9 @@ export interface AssetCloudMessageMap {
         /** 当前用户所属集团ID列表 */
         groupIds: string[]
     };
+    "GET_MENU": {
+        [key: string]: any;
+    }
     
 }
 
