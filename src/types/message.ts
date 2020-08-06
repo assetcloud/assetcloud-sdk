@@ -1,0 +1,28 @@
+/** 资产云前端消息 */
+export type AssetCloudMessage =
+    /** 初始化 */
+    "APP_INIT" |
+    /** 获取当前用户ID */
+    "GET_USER" |
+    /** 打开新标签页 */
+    "OPEN_TAB" |
+    /** 跳转至首页 */
+    "GO_HOME" |
+    /** 获取当前用户所属集团ID列表 */
+    "GET_GROUP"
+    ;
+
+/** 针对每一种消息，分别定义返回数据的类型 */
+export interface AssetCloudMessageMap {
+    "APP_INIT": string;
+    "GET_USER": {
+        /** 用户ID */
+        userId: string
+    };
+    "GET_GROUP": {
+        /** 当前用户所属集团ID列表 */
+        groupIds: string[]
+    };
+    
+}
+
