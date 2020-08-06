@@ -1,5 +1,7 @@
 ### 资产云前端 SDK
 
+![Release](https://img.shields.io/github/v/release/SwingCosmic/assetcloud-sdk)
+
 [旧版文档](https://gitee.com/assetcloud-hdu/doc-cn/tree/master/app-devlep-flow/sdk/front-end/README.md)
 
 1. 导入和初始化
