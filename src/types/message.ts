@@ -22,8 +22,14 @@ export interface AssetCloudMessageMap {
         userId: string
     };
     "GET_GROUP": {
-        /** 当前用户所属集团ID列表 */
-        groupIds: string[]
+        /** 当前用户所属集团列表 */
+        groupIds: {
+            id: string;
+            groupName: string;
+            groupCode: string;
+            type: number;
+            [key: string]: any;
+        }[]
     };
     "GET_MENU": {
         [key: string]: any;
