@@ -99,6 +99,7 @@
 | 功能 | 消息类型 <br />AssetCloudMessage  | 请求参数 | 返回结果中data的格式<br />AssetCloudMessageMap[T] |
 | -- | --  | -- | :--: |
 | 获取用户 Id           | GET_USER  | 无 | `{ userId: string }` |
+| 获取用户账号         | GET_USER_PHONE  | 无 | `{ phone: string }` |
 | 获取当前用户所属集团列表            | GET_GROUP | 无 | `{ groupIds: object[] }` |
 | 在浏览器打开新的标签页   | OPEN_TAB  | 需要打开的url，<br />如："http://www.baidu.com" | — |
 | 跳转到平台首页         | GO_HOME   | 无 | — |

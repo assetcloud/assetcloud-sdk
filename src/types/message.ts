@@ -4,6 +4,8 @@ export type AssetCloudMessage =
     "APP_INIT" |
     /** 获取当前用户ID */
     "GET_USER" |
+    /** 获取当前用户手机号 */
+    "GET_USER_PHONE" |
     /** 打开新标签页 */
     "OPEN_TAB" |
     /** 跳转至首页 */
@@ -20,6 +22,10 @@ export interface AssetCloudMessageMap {
     "GET_USER": {
         /** 用户ID */
         userId: string
+    };
+    "GET_USER_PHONE": {
+        /** 用户手机号 */
+        phone: string
     };
     "GET_GROUP": {
         /** 当前用户所属集团列表 */
