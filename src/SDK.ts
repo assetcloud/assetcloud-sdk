@@ -11,9 +11,12 @@ type AssetCloudMessageEventMap = {
 export default class SdkClient implements EventTarget {
 
     readonly baseUrl: string;
+    timeout: number;
+
     private messageQueue: {
         type: AssetCloudMessage,
         checkCode: string,
+        timer?: number,
         resolve?: (value: AssetCloudEvent<AssetCloudMessage>) => void;
         reject?: (value: AssetCloudEvent<"error">) => void;
     }[] = [];
@@ -23,9 +26,13 @@ export default class SdkClient implements EventTarget {
 
 
 
-    /** 创建新SDK客户端实例 */
-    constructor() {
+    /** 
+     * 创建新SDK客户端实例
+     * @param timeout 超时等待时间，默认10秒
+     */
+    constructor(timeout = 10) {
         this.baseUrl = `${window.location.origin}${window.location.pathname}`;
+        this.timeout = timeout;
     }
 
 
@@ -103,12 +110,23 @@ export default class SdkClient implements EventTarget {
             checkCode: "r" + new Date().getTime() + "_" + ~~(Math.random() * 100),
             verifyCode: "",
         };
-        this.messageQueue.push({
+        const item = {
             type: message.type,
             checkCode: message.checkCode,
             resolve,
-            reject
-        })
+            reject,
+            timer: undefined as any
+        };
+        if (resolve && reject) {
+            item.timer = setTimeout(() => {
+                reject(new AssetCloudEvent("error", {
+                    data: null,
+                    msg: "消息响应超时",
+                    originType: message.type
+                }));
+            }, this.timeout * 1000);
+        }
+        this.messageQueue.push(item);
         window.top.postMessage(message, "*");
     }
 
@@ -139,7 +157,8 @@ export default class SdkClient implements EventTarget {
             if (item) {
                 this.messageQueue.splice(this.messageQueue.indexOf(item), 1);             
                 if (item.resolve && item.reject) {
-                     event.data.success ? item.resolve(event) : item.reject(event);  
+                    clearTimeout(item.timer);
+                    event.data.success ? item.resolve(event) : item.reject(event);  
                 } else {
                     this.dispatchEvent(event);
                 }

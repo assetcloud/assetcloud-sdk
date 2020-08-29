@@ -21,15 +21,17 @@
    #### npm包引入（推荐）
    ```javascript
    import SdkClient from "@assetcloud/asset-sdk";
-   const ac = new SdkClient();
+   // 初始化时可设定超时时间（秒）
+   const ac = new SdkClient(5);
    await ac.init();
    ```
 
 2. 监听和发送消息
 
    处理消息有两种方法，添加事件监听器和直接异步发送消息并等待返回结果。
-   #### 直接监听事件
-   支持处理来自平台主动推送的消息。
+   #### 直接监听事件&直接发送消息
+   支持接收来自平台主动推送的消息。
+   支持发送没有响应结果的消息。
 
    ```javascript
    ac.addEventListener("GET_USER", e => {
@@ -38,7 +40,7 @@
    ac.send("GET_USER");
    
    ```
-   #### 异步发送消息并返回结果
+   #### 发送消息并等待返回结果
    返回`Promise`，如果平台返回值的`success`字段为`false`，会自动触发reject。
 
    ```javascript
