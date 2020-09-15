@@ -105,4 +105,5 @@
 | 获取当前用户所属集团列表            | GET_GROUP | 无 | `{ groupIds: object[] }` |
 | 在浏览器打开新的标签页   | OPEN_TAB  | 需要打开的url，<br />如："http://www.baidu.com" | — |
 | 跳转到平台首页         | GO_HOME   | 无 | — |
+| 跳转到平台待办         | GO_TODO   | 无 | — |
 | 获取当前应用入口菜单         | GET_MENU   | 无 | `object` |

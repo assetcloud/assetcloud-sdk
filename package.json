@@ -1,6 +1,6 @@
 {
   "name": "@assetcloud/asset-sdk",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "资产云前端SDK",
   "main": "dist/sdk.umd.js",
   "module": "dist/index.js",

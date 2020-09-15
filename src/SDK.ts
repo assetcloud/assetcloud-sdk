@@ -21,7 +21,7 @@ export default class SdkClient implements EventTarget {
         reject?: (value: AssetCloudEvent<"error">) => void;
     }[] = [];
 
-    private appId: string | null = null;
+    appId: string | null = null;
     private eventEmitter = new EventEmitter<AssetCloudMessageEventMap>();
 
 

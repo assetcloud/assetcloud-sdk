@@ -13,7 +13,9 @@ export type AssetCloudMessage =
     /** 获取当前用户所属集团ID列表 */
     "GET_GROUP" |
     /** 获取入口菜单 */
-    "GET_MENU"
+    "GET_MENU" |
+    /** 跳转至待办 */
+    "GO_TODO"
     ;
 
 /** 针对每一种消息，分别定义返回数据的类型 */
