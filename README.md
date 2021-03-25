@@ -107,4 +107,5 @@
 | 在浏览器打开新的标签页   | OPEN_TAB  | 需要打开的url，<br />如："http://www.baidu.com" | — |
 | 跳转到平台首页         | GO_HOME   | 无 | — |
 | 跳转到平台待办         | GO_TODO   | 无 | — |
+| 将当前页面全屏（整个屏幕全屏）       | OPEN_FULLSCREEN                  | 无                       |      —      |
 | 获取当前应用入口菜单         | GET_MENU   | 无 | `object` |
