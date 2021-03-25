@@ -10,12 +10,14 @@ export type AssetCloudMessage =
     "OPEN_TAB" |
     /** 跳转至首页 */
     "GO_HOME" |
-    /** 获取当前用户所属集团ID列表 */
+    /** 获取当前应用分发集团列表 */
     "GET_GROUP" |
     /** 获取入口菜单 */
     "GET_MENU" |
     /** 跳转至待办 */
-    "GO_TODO"
+    "GO_TODO" |
+    /** 请求应用全屏 */
+    "OPEN_FULLSCREEN"
     ;
 
 /** 针对每一种消息，分别定义返回数据的类型 */
@@ -30,7 +32,7 @@ export interface AssetCloudMessageMap {
         phone: string
     };
     "GET_GROUP": {
-        /** 当前用户所属集团列表 */
+        /** 当前应用分发集团列表 */
         groupIds: {
             id: string;
             groupName: string;

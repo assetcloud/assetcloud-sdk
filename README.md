@@ -11,7 +11,8 @@
 
    #### script标签引入
    ```html
-   <script src="dist/sdk.umd.js"></script>
+   <!-- 将包内dist/sdk.umd.js复制到项目中合适的位置 -->
+   <script src="path/to/sdk.umd.js"></script>
    <script>
    var ac = new ACSDK.SdkClient();
    ac.init().then(function() {
@@ -20,6 +21,8 @@
    </script>
    ```
    #### npm包引入（推荐）
+
+   可以使用ES7 `async/await` 语法简化异步调用
    ```javascript
    import SdkClient from "@assetcloud/asset-sdk";
    // 初始化时可设定超时时间（秒）
