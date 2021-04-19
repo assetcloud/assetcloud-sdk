@@ -5,30 +5,56 @@
 
 [旧版文档](https://gitee.com/assetcloud-hdu/doc-cn/tree/master/app-devlep-flow/sdk/front-end/README.md)
 
-1. 导入和初始化
+## 注意：SDK请在平台上架应用后在平台内打开进行调用！直接使用无效！
 
-   导入方式有两种，script标签引入或者npm包引入
+资产云前端SDK，利用postMessage进行跨iframe的安全数据请求。用于获取用户id等基础信息，或者请求平台前端进行某些操作。
 
-   #### script标签引入
-   ```html
-   <!-- 将包内dist/sdk.umd.js复制到项目中合适的位置 -->
-   <script src="path/to/sdk.umd.js"></script>
-   <script>
-   var ac = new ACSDK.SdkClient();
-   ac.init().then(function() {
-      console.log("SDK已初始化");
-   });
-   </script>
-   ```
-   #### npm包引入（推荐）
+SDK采用TypeScript开发，采用npm包引入可以自动获得完善的类型定义和代码自动补全。
 
-   可以使用ES7 `async/await` 语法简化异步调用
-   ```javascript
-   import SdkClient from "@assetcloud/asset-sdk";
-   // 初始化时可设定超时时间（秒）
-   const ac = new SdkClient(5);
-   await ac.init();
-   ```
+1. 引入和初始化
+
+    可以使用script标签或者npm包两种方式进行引入。
+
+    * npm包安装（推荐）
+
+    可以使用ES7 `async/await` 语法简化异步调用
+    ```javascript
+    import SdkClient from "@assetcloud/asset-sdk";
+    // 初始化时可设定超时时间（秒）
+    const ac = new SdkClient(5);
+    await ac.init();
+    ```
+
+    * script标签引入
+
+    ```html
+    <!-- 将包内dist/sdk.umd.js复制到项目中合适的位置 -->
+    <script src="path/to/sdk.umd.js"></script>
+    <script>
+    var ac = new ACSDK.SdkClient();
+    ac.init().then(function() {
+        console.log("SDK已初始化");
+    });
+    </script>
+    ```
+
+    注意：在构建工具（如Webpack）中直接使用script标签引入，需要以正确的顺序排列script标签，不然会找不到变量。如果需要在引用npm包的情况下使用script标签的全局变量，可以通过配置外部依赖的方式使用。
+
+    ```javascript
+    // webpack.config.js（或vue.config.js）
+    module.exports = {
+        //...
+        externals: {
+            "@assetcloud/asset-sdk": "ACSDK"
+        },
+    };
+
+    // OK
+    import SdkClient from "@assetcloud/asset-sdk";
+    const ac1 = new SdkClient();
+    // OK, 全局变量依然可以使用
+    const ac2 = new ACSDK.SdkClient();
+    ```
 
 2. 监听和发送消息
 

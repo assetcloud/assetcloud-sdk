@@ -51,6 +51,9 @@ export default class SdkClient implements EventTarget {
     /** 初始化SDK客户端 */
     async init() {
         window.addEventListener("message", this.handleMessage);
+        if (window.top === window) {
+            console.error("ACSDK: 请在资产云平台中使用，外部调用无效！");
+        }
         return this.sendAsync("APP_INIT", this.baseUrl);
     }
 
