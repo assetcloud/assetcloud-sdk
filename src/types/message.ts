@@ -17,7 +17,9 @@ export type AssetCloudMessage =
     /** 跳转至待办 */
     "GO_TODO" |
     /** 请求应用全屏 */
-    "OPEN_FULLSCREEN"
+    "OPEN_FULLSCREEN" |
+    /** 关闭待办弹窗 */
+    "CLOSE_DIALOG"
     ;
 
 /** 针对每一种消息，分别定义返回数据的类型 */

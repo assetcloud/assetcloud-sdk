@@ -1,15 +1,22 @@
-### 资产云前端 SDK
+## 资产云前端 SDK
 
 ![Release](https://img.shields.io/github/v/release/SwingCosmic/assetcloud-sdk)
 ![npm](https://img.shields.io/npm/v/@assetcloud/asset-sdk?color=green)
 
 [旧版文档](https://gitee.com/assetcloud-hdu/doc-cn/tree/master/app-devlep-flow/sdk/front-end/README.md)
 
-## 注意：SDK请在平台上架应用后在平台内打开进行调用！直接使用无效！
+### 注意：
+<div style="color:red">
+<ul>
+<li>SDK请在平台上架应用后在平台内打开进行调用，直接使用无效！</li>
+<li>使用前请先了解ES6相关知识，包括<c>Promise</c>的用法以及await的使用条件</li>
+</ul>
+</div>
 
 资产云前端SDK，利用postMessage进行跨iframe的安全数据请求。用于获取用户id等基础信息，或者请求平台前端进行某些操作。
 
 SDK采用TypeScript开发，采用npm包引入可以自动获得完善的类型定义和代码自动补全。
+### 快速开始
 
 1. 引入和初始化
 
